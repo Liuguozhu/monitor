@@ -16,8 +16,6 @@ The documentation is written using the open source tool [docsify](https://docsif
 - Freemarker
 - Redis
 - ElasticSearch
-- WebSocket
-- I18N
 
 ## Feature
 

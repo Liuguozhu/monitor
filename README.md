@@ -64,10 +64,7 @@ mvn clean assembly:assembly
 
 ## 贡献
 
-- 感谢 [@zzzzbw](https://github.com/zzzzbw) 大佬帮忙开发的 `Dockerfile` 和 `docker-compose.yml`
-- 感谢 [@sunkaifei](https://github.com/sunkaifei) 提供的阿里云短信验证码登录要用到的 `key` `secret`
-- 感谢 [@gdhua](https://github.com/gdhua) 提供的微信联合登录要用到的 `appid` `appsecret`
-
+- 感谢 [@@tomoya92](https://github.com/@tomoya92) 大佬帮忙提供的技术支持
 
 
 ## 所有版本
