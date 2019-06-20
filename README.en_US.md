@@ -1,8 +1,8 @@
-> Instructions: Please mark in a conspicuous place `powered by pybbs`
+> Instructions: Please mark in a conspicuous place `powered by monitor`
 
 ## Document
 
-[Document](https://tomoya92.github.io/pybbs/#/)
+[Document](https://github.com/Liuguozhu/monitor/#/)
 
 The documentation is written using the open source tool [docsify](https://docsify.js.org/#/quickstart)
 
@@ -24,16 +24,14 @@ The documentation is written using the open source tool [docsify](https://docsif
 - This project integrates many third-party services, Such as redis, elasticsearch, websocket, etc.
 - you can use it to build your own website, or you can use it as a project to learn related technologies.
 - you can configure different third-party services on the backend.
-- You can start a website service by using maven, docker, or downloading the zip package in the release.
 - Integrated flyway makes it easy to iterate on database operations
-- I18n support, so that language is not a barrier to communication
 - The document is very detailed
 
 ## Getting Started
 
-[Getting Started Document](https://tomoya92.github.io/pybbs/#/getting-started)
+[Getting Started Document](https://github.com/Liuguozhu/monitor/#/getting-started)
 
-**Special thanks to github user [@zzzzbw](https://github.com/zzzzbw) for helping to develop dockerfile**
+**Special thanks to github user [@tomoya92](https://github.com/tomoya92) for helping to develop dockerfile**
 
 ## Manual package
 
@@ -51,9 +49,7 @@ Project test cases have not been written yet!
 
 ## Feedback
 
-- [开发俱乐部](https://17dev.club/)
-- [issues](https://github.com/tomoya92/pybbs/issues)
-- QQ group：`419343003`
+- [issues](https://github.com/Liuguozhu/monitor/issues)
 
 *Please clearly describe the problem recurring steps when asking questions*
 
@@ -63,8 +59,7 @@ Welcome everyone to submit issues and pr
 
 ## Donation
 
-![image](https://cloud.githubusercontent.com/assets/6915570/18000010/9283d530-6bae-11e6-8c34-cd27060b9074.png)
-![image](https://cloud.githubusercontent.com/assets/6915570/17999995/7c2a4db4-6bae-11e6-891c-4b6bc4f00f4b.png)
+![image](https://coding-net-production-pp-ci.codehub.cn/587aa702-bb99-4587-8075-2c2f475643d5.jpeg)
 
 **If you feel that this project is helpful to you, welcome to donate!**
 

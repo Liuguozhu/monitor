@@ -5,7 +5,7 @@
 当前版本：1.0
 
 
-- 后台地址：[http://192.168.1.66：/adminlogin](https://demo.yiiu.co/adminlogin) 用户名: test 密码: 123456
+- 后台地址：[http://192.168.1.66:/adminlogin](https://demo.yiiu.co/adminlogin) 用户名: test 密码: 123456
 
 如果发现了bug或者有好的建议，欢迎提issue，当然更欢迎 pr，服务器上数据不定期重置，切记不要发重要的信息在上面 **它只是个演示环境**
 
@@ -21,7 +21,6 @@
 
 [Spring-Boot项目集成Flyway和MybatisPlus](https://tomoya92.github.io/2019/01/03/spring-boot-flyway-mybatis-plus/)
 
-文档使用开源工具 [docsify](https://docsify.js.org/#/quickstart) 编写
 
 ## 技术栈
 
@@ -55,9 +54,7 @@ mvn clean assembly:assembly
 
 其实手动打包后生成的tar.gz文件就是github上release里最新的发布包，下载后解压内容是一样的
 
-## 测试
 
-项目测试用例还没有写
 
 ## 反馈
 欢迎大家提 issues 及 pr
@@ -73,19 +70,19 @@ mvn clean assembly:assembly
 
 
 
-## 其它版本
+## 所有版本
 
-|               | master                                      |
-| :-----------  | :------------------------------------------ |
-| 开源地址       | [传送门](https://github.com/tomoya92/pybbs) |
-| 开发框架       | Spring-Boot, Mybatis-Plus                   |
-| 数据库         | MySQL                                       |
-| 前台           | &radic;                                     |
-| 后台           | &radic;                                     |
-| 前后台合一     |                                             |
-| 编辑器         | [CodeMirror](https://codemirror.net/)       |
-| 权限           | RBAC                                        |
-| 搜索           |Elasticsearch                                |
+|               | master                                         |
+| :-----------  | :------------------------------------------    |
+| 开源地址       | [传送门](https://github.com/Liuguozhu/monitor) |
+| 开发框架       | Spring-Boot, Mybatis-Plus                     |
+| 数据库         | MySQL                                         |
+| 前台           | &radic;                                       |
+| 后台           | &radic;                                       |
+| 前后台合一     |                                               |
+| 编辑器         | [CodeMirror](https://codemirror.net/)         |
+| 权限           | RBAC                                          |
+| 搜索           | Elasticsearch                                 |
 
 
 
