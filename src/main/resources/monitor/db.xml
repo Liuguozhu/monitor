@@ -1,0 +1,54 @@
+<dataSources>
+
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.66:8066/monitor</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.67:3306/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.67:3307/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.67:3308/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.68:3306/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.68:3307/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+    <dataSource>
+        <url>jdbc:mysql://10.10.0.68:3308/mysql</url>
+        <username>root</username>
+        <password>chineseplatzz#2015^3z%3y*5x</password>
+    </dataSource>
+
+<!--
+    <dataSource>
+        <url>jdbc:mysql://127.0.0.1:3306/mysql?useUnicode=true&characterEncoding=utf8&mysqlEncoding=utf8</url>
+        <username>root</username>
+        <password>root</password>
+    </dataSource>
+
+    <dataSource>
+        <url>jdbc:mysql://127.0.0.1:3306/monitor?useUnicode=true&characterEncoding=utf8&mysqlEncoding=utf8</url>
+        <username>root</username>
+        <password>root</password>
+    </dataSource>
+-->
+</dataSources>

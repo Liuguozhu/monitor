@@ -7,6 +7,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+import com.coder.monitor.exception.ApiAssert;
 import com.coder.monitor.service.SystemConfigService;
 import com.coder.monitor.util.JsonUtil;
 import com.github.qcloudsms.SmsSingleSender;
@@ -37,11 +38,9 @@ public class SmsService {
     private String templateCode;
     private String regionId;
     // 短信应用 SDK AppID
-    private int appid = 1400209480; // SDK AppID 以1400开头
+    private int appid; // SDK AppID 以1400开头
     // 短信应用 SDK AppKey
-    private String appkey = "22088250b177d33164cc9383b0fe1bf4";
-    // 短信模板 ID，需要在短信应用中申请
-    private int templateId = 330850; // NOTE: 这里的模板 ID`7839`只是示例，真实的模板 ID 需要在短信控制台中申请
+    private String appkey;
     private boolean useAliYunSms = false;
 
     private SmsService() {
@@ -109,19 +108,14 @@ public class SmsService {
 
 
     // 发短信
-    private boolean sendSmsByTencent(String mobile, String code) {
-        log.info("mobile = {}  code ={}", mobile, code);
-        if (appkey == null) {
-            appid = 1400209480; // SDK AppID 以1400开头
-            appkey = "22088250b177d33164cc9383b0fe1bf4";  // 短信应用 SDK AppKey
-        }
-        System.out.println();
+    private boolean sendSmsByTencent(String mobile, String message) {
+        log.info("mobile = {}  code ={}", mobile, message);
+        ApiAssert.notNull(appid, "请先配置腾讯短信服务的appId"); // 短信应用 SDK AppKey
+        ApiAssert.notNull(appkey, "请先配置腾讯短信服务的appKey"); // 短信应用 SDK AppKey
         try {
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
             //type 0表示普通短信，1表示营销短信
-            SmsSingleSenderResult result = ssender.send(0, "86", mobile,
-                    "【掌中飞天】您的验证码是" + code + "，请于5分钟内填写.如非本人操作，请忽略此短信。", "", "");
-            System.out.println(result);
+            SmsSingleSenderResult result = ssender.send(0, "86", mobile, message, "", "");
             log.info("result = {} ", result);
             if (result.result == 0) {
                 return true;
@@ -136,16 +130,16 @@ public class SmsService {
     // 发短信
     private boolean sendSmsByTencentWithTemplate(String mobile, String code) {
         log.info("mobile = {}  code ={}", mobile, code);
-        if (appkey == null) {
-            appid = 1400209480; // SDK AppID 以1400开头
-            appkey = "22088250b177d33164cc9383b0fe1bf4";  // 短信应用 SDK AppKey
-        }
+        ApiAssert.notNull(appid, "请先配置腾讯短信服务的appId"); // 短信应用 SDK AppKey
+        ApiAssert.notNull(appkey, "请先配置腾讯短信服务的appKey"); // 短信应用 SDK AppKey
         try {
             String[] params = {code};
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
+            // 短信模板 ID，需要在短信应用中申请
+            // NOTE: 这里的模板 ID只是示例，真实的模板 ID 需要在短信控制台中申请
+            int templateId = 330850;
             SmsSingleSenderResult result = ssender.sendWithParam("86", mobile,
                     templateId, params, null, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
-            System.out.println(result);
             log.info("result = {} ", result);
             if (result.result == 0) {
                 return true;
