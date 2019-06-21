@@ -64,7 +64,7 @@ mvn clean assembly:assembly
 
 ## 贡献
 
-- 感谢 [@@tomoya92](https://github.com/@tomoya92) 大佬帮忙提供的技术支持
+- 感谢 [@tomoya92](https://github.com/tomoya92) 大佬帮忙提供的技术支持
 
 
 ## 所有版本
@@ -89,6 +89,5 @@ mvn clean assembly:assembly
 
 **如果觉得这个项目对你有帮助，欢迎捐赠！**
 
-## License
 
 

@@ -61,6 +61,4 @@ Welcome everyone to submit issues and pr
 
 **If you feel that this project is helpful to you, welcome to donate!**
 
-## License
 
-GNU AGPLv3
