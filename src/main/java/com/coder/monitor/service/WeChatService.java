@@ -55,10 +55,18 @@ public class WeChatService {
     private static String AGENT_ID;//企业号应用id,在企业微信创建某个应用，其实就是类似微信群，群里可以添加企业微信内的员工，这个群组的人都将收到通知的消息
 
     private void initProperties() {
-        APP_ID = systemConfigService.selectAllConfig().get("appId").toString();
-        APP_SECRET = systemConfigService.selectAllConfig().get("appSecret").toString();
-        TOKEN = systemConfigService.selectAllConfig().get("token").toString();
-        AGENT_ID = systemConfigService.selectAllConfig().get("agentId").toString();
+        Object appId = systemConfigService.selectAllConfig().get("appId");
+        Object appSecret = systemConfigService.selectAllConfig().get("appSecret");
+        Object token = systemConfigService.selectAllConfig().get("token");
+        Object agentId = systemConfigService.selectAllConfig().get("agentId");
+        ApiAssert.notNull(appId,"未配置微信appId");
+        ApiAssert.notNull(appSecret,"未配置微信appSecret");
+        ApiAssert.notNull(token,"未配置微信token");
+        ApiAssert.notNull(agentId,"未配置微信agentId");
+        APP_ID = appId.toString();
+        APP_SECRET = appSecret.toString();
+        TOKEN = token.toString();
+        AGENT_ID = agentId.toString();
     }
 
     /**
@@ -95,7 +103,7 @@ public class WeChatService {
                 String result = EntityUtils.toString(response.getEntity());
                 log.debug("获取token result=" + result);
                 Map map = JsonUtil.jsonToObject(result, Map.class);
-                ApiAssert.notNull(map,"获取微信企业号的token失败！请检查配置");
+                ApiAssert.notNull(map, "获取微信企业号的token失败！请检查配置");
                 ACCESS_TOKEN = (String) map.get("access_token");//获取到的凭证
                 log.debug("ACCESS_TOKEN=" + ACCESS_TOKEN);
                 int time = (Integer) map.get("expires_in");//凭证有效时间，单位：秒

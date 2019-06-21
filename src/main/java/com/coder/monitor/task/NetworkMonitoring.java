@@ -25,7 +25,7 @@ public class NetworkMonitoring {
     @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
     public void checkNetwork() {
         logger.debug("check Network begin.");
-        String host = "www.sohu.com";
+        String host = "www.baidu.com";
         boolean isReachable = false;
         try {
             InetAddress address = InetAddress.getByName(host);//ping this IP
@@ -76,10 +76,10 @@ public class NetworkMonitoring {
     }
 
     //    @Scheduled(fixedDelay = 5000)
-    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
+//    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
     public void checkNetwork2() {
         logger.debug("check Network begin.");
-        String ip = "www.sohu.com";
+        String ip = "www.baidu.com";
         String retIP;
         try {
             InetAddress remoteAddress = InetAddress.getByName(ip);//ping this IP

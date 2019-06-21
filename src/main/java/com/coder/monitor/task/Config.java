@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Config {
     private static final Logger logger = LoggerFactory.getLogger(Config.class);
-    public static final String DB = "dataSource";
+    static final String DB = "dataSource";
     static final String REDIS = "redis";
     static final String MQ = "ActiveMQ";
     static List<DataSourceInfo> dataSourceInfoList = null;

@@ -1,5 +1,5 @@
 > Instructions: Please mark in a conspicuous place `powered by monitor`
-
+[中文 README](README.md)
 ## Document
 
 [Document](https://github.com/Liuguozhu/monitor/#/)
