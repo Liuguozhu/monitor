@@ -64,6 +64,14 @@
                         <option <#if system.value == opt>selected</#if> value="${opt}">${opt}</option>
                       </#list>
                     </select>
+                  <#elseif system.type == "checkbox">
+                      <#list system.option?split(',') as opt>
+                        <#if system.value?contains( opt?split('|')[0] )>
+                           <input type="checkbox" name="${system.key!}" value="${opt?split('|')[0]}" checked /> ${opt?split('|')[1]} &nbsp;
+                        <#else>
+                           <input type="checkbox" name="${system.key!}" value="${opt?split('|')[0]}"  />${opt?split('|')[1]} &nbsp;
+                        </#if>
+                      </#list>
                   </#if>
                 </div>
               </#list>
@@ -87,6 +95,8 @@
     </div>
   </section>
   <script>
+
+
     function save() {
       var search = $("#search").val();
       var es_host = $("#elasticsearch_host").val();

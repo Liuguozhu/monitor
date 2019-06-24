@@ -59,10 +59,10 @@ public class WeChatService {
         Object appSecret = systemConfigService.selectAllConfig().get("appSecret");
         Object token = systemConfigService.selectAllConfig().get("token");
         Object agentId = systemConfigService.selectAllConfig().get("agentId");
-        ApiAssert.notNull(appId,"未配置微信appId");
-        ApiAssert.notNull(appSecret,"未配置微信appSecret");
-        ApiAssert.notNull(token,"未配置微信token");
-        ApiAssert.notNull(agentId,"未配置微信agentId");
+        ApiAssert.notNull(appId, "未配置微信appId");
+        ApiAssert.notNull(appSecret, "未配置微信appSecret");
+        ApiAssert.notNull(token, "未配置微信token");
+        ApiAssert.notNull(agentId, "未配置微信agentId");
         APP_ID = appId.toString();
         APP_SECRET = appSecret.toString();
         TOKEN = token.toString();
@@ -106,12 +106,17 @@ public class WeChatService {
                 ApiAssert.notNull(map, "获取微信企业号的token失败！请检查配置");
                 ACCESS_TOKEN = (String) map.get("access_token");//获取到的凭证
                 log.debug("ACCESS_TOKEN=" + ACCESS_TOKEN);
-                int time = (Integer) map.get("expires_in");//凭证有效时间，单位：秒
+                Object expiresIn = map.get("expires_in");//凭证有效时间，单位：秒
+                ApiAssert.notNull(expiresIn, "获取微信企业号的token失败！expires_in 为空");
+                int time = (Integer)expiresIn;//凭证有效时间，单位：秒
+
                 EXPIRES_TIME = System.currentTimeMillis() + time * 1000;
                 log.debug("expires_in=" + time);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            log.error("获取微信 ACCESS_TOKEN 失败：" + response.getStatusLine().getStatusCode());
         }
     }
 
