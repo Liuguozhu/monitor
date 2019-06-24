@@ -66,11 +66,8 @@
                     </select>
                   <#elseif system.type == "checkbox">
                       <#list system.option?split(',') as opt>
-                        <#if system.value?contains( opt?split('|')[0] )>
-                           <input type="checkbox" name="${system.key!}" value="${opt?split('|')[0]}" checked /> ${opt?split('|')[1]} &nbsp;
-                        <#else>
-                           <input type="checkbox" name="${system.key!}" value="${opt?split('|')[0]}"  />${opt?split('|')[1]} &nbsp;
-                        </#if>
+                           <input type="checkbox" name="${system.key!}" value="${opt?split('|')[0]}"
+                            <#if system.value?contains( opt?split('|')[0] )>checked  </#if> /> ${opt?split('|')[1]} &nbsp;
                       </#list>
                   </#if>
                 </div>
@@ -96,16 +93,18 @@
   </section>
   <script>
 
-
     function save() {
       var search = $("#search").val();
       var es_host = $("#elasticsearch_host").val();
       var es_port = $("#elasticsearch_port").val();
       var es_index = $("#elasticsearch_index").val();
+      var checkBoxBoolean = false; //TODO 验证勾选了监听的服务有没有对应配置；和勾选的通知方式有没有对应配置
       if (search === "1" && (es_host.length === 0 || es_port.length === 0 || es_index.length === 0)) {
         toast("开启搜索功能却不配置ES服务，你是想让网站隔屁吗？");
         // TODO 增加相应输入框红色边框，提示用户应该配置哪地方
-      } else {
+      }else if( checkBoxBoolean ){
+         toast("勾选了某些选项却没有填写相关配置，你是想让本服务隔屁吗？");
+      }else {
         $.ajax({
           url: "/admin/system/edit",
           contentType: "application/json; charset=utf-8",

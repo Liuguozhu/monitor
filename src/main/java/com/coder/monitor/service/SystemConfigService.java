@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,8 +74,10 @@ public class SystemConfigService {
 
     // 在更新系统设置后，清一下selectAllConfig()的缓存
     public void update(List<Map<String, String>> list) {
-        String checkBoxKey = "notify_way";
-        StringBuilder checkBoxValue = new StringBuilder();
+        Map<String, String> checkBoxMap = new HashMap<>();
+        //TODO 数据库中添加一条系统配置是checkbox的，要在这里添加key，否则无法update
+        checkBoxMap.put("monitor_service", "");
+        checkBoxMap.put("notify_way", "");
         for (Map map : list) {
             String key = (String) map.get("name");
             String value = (String) map.get("value");
@@ -84,8 +87,8 @@ public class SystemConfigService {
                     (key.equals("oauth_github_client_secret") && value.equals("*******"))) {
                 continue;
             }
-            if (checkBoxKey.equals(key)) {//获取复选框选中的value
-                checkBoxValue.append(value).append(",");
+            if (checkBoxMap.keySet().contains(key)) {//获取复选框选中的value
+                checkBoxMap.put(key, checkBoxMap.get(key) + value + ",");
             } else {
                 SystemConfig systemConfig = new SystemConfig();
                 systemConfig.setKey(key);
@@ -95,16 +98,18 @@ public class SystemConfigService {
                 systemConfigMapper.update(systemConfig, wrapper);
             }
         }
-        //更新复选框的value
-        if (!TextUtils.isEmpty(checkBoxValue)) {
-            SystemConfig systemConfig = new SystemConfig();
-            systemConfig.setKey(checkBoxKey);
-            systemConfig.setValue(checkBoxValue.toString());
-            QueryWrapper<SystemConfig> wrapper = new QueryWrapper<>();
-            wrapper.lambda().eq(SystemConfig::getKey, systemConfig.getKey());
-            systemConfigMapper.update(systemConfig, wrapper);
-        }
 
+        checkBoxMap.forEach((k, v) -> {
+            //更新复选框的value
+            if (!TextUtils.isEmpty(v)) {
+                SystemConfig systemConfig = new SystemConfig();
+                systemConfig.setKey(k);
+                systemConfig.setValue(v);
+                QueryWrapper<SystemConfig> wrapper = new QueryWrapper<>();
+                wrapper.lambda().eq(SystemConfig::getKey, systemConfig.getKey());
+                systemConfigMapper.update(systemConfig, wrapper);
+            }
+        });
 
         // 判断redis配置是否去除，去除了，就将RedisUtil里的jedis属性设置为null
         if (!redisService.isRedisConfig()) redisService.setJedis(null);

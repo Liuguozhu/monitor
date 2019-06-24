@@ -1,3 +1,3 @@
 INSERT INTO `system_config`(`id`, `key`, `value`, `description`, `pid`, `type`, `option`, `reboot`) VALUES (67, NULL, '', '监听服务和通知方式选择', 0, NULL, NULL, 0);
 INSERT INTO `system_config`(`id`, `key`, `value`, `description`, `pid`, `type`, `option`, `reboot`) VALUES (68, 'monitor_service', 'redis', '监听服务', 67, 'checkbox', 'redis|redis,mongodb|mongodb,mysql|mysql,network|network', 0);
-INSERT INTO `system_config`(`id`, `key`, `value`, `description`, `pid`, `type`, `option`, `reboot`) VALUES (70, 'notify_way', 'email,sms_ali,', '服务器异常消息通知方式', 67, 'checkbox', 'email|邮件,sms_tencent|腾讯云短信,sms_ali|阿里云短信,wechat|企业微信', 0);
+INSERT INTO `system_config`(`id`, `key`, `value`, `description`, `pid`, `type`, `option`, `reboot`) VALUES (70, 'notify_way', 'email,sms_ali,', '服务异常消息通知方式', 67, 'checkbox', 'email|邮件,sms_tencent|腾讯云短信,sms_ali|阿里云短信,wechat|企业微信', 0);

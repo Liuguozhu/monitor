@@ -30,7 +30,7 @@ public class MonitorController {
 
     @RequestMapping(value = "/sendMassageAndRestartServer")
     public String sendMassageAndRestartServer(String massage) throws UnsupportedEncodingException {
-        String encodemassage = new String(massage.getBytes("iso8859-1"), StandardCharsets.UTF_8);
+//        String encodemassage = new String(massage.getBytes("iso8859-1"), StandardCharsets.UTF_8);
         // host
         SystemConfig systemConfig = systemConfigService.selectByKey("receive_mobile");
         String receive_mobile = systemConfig.getValue();
