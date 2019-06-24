@@ -12,12 +12,6 @@
 
 如果发现了bug或者有好的建议，欢迎提issue，当然更欢迎 pr。
 
-## 文档
-
-[文档地址](https://tomoya92.github.io/pybbs/#/zh-cn/)
-
-文档使用开源工具 [docsify](https://docsify.js.org/#/quickstart) 编写
-
 ## 鸣谢
 
 [pybbs](https://github.com/tomoya92/pybbs)
@@ -39,16 +33,14 @@
 
 ## 运行
 
-参考文档吧，更详细 [传送门](https://tomoya92.github.io/pybbs/#/getting-started)
+参考文档吧，更详细 [传送门](https://github.com/Liuguozhu/monitor)
 
 ## 手动打包
 
 ```bash
 mvn clean assembly:assembly
 ```
-打包完成后，会在项目根目录下的target目录里生成一个`pybbs.tar.gz`文件，解压运行 `sh start.sh` 即可启动论坛服务
-
-其实手动打包后生成的tar.gz文件就是github上release里最新的发布包，下载后解压内容是一样的
+打包完成后，会在项目根目录下的target目录里生成一个`pybbs.tar.gz`文件，解压运行 `sh start.sh` 即可启动服务。
 
 ## 反馈
 欢迎大家提 issues 及 pr
@@ -72,7 +64,6 @@ mvn clean assembly:assembly
 | 编辑器         | [IntelliJ IDEA](https://www.jetbrains.com/idea/)  |
 | 权限           | RBAC                                              |
 | 搜索           | Elasticsearch                                     |
-
 
 
 ## 捐赠
