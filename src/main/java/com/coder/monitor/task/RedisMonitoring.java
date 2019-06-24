@@ -1,7 +1,6 @@
 package com.coder.monitor.task;
 
 import com.coder.monitor.config.service.RedisService;
-import com.coder.monitor.controller.CommonController;
 import com.coder.monitor.service.WeChatService;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
@@ -27,7 +26,7 @@ public class RedisMonitoring {
 
     public void checkRedis() {
         logger.debug("check Redis begin.");
-        String errorMessage = "";
+        StringBuilder errorMessage = new StringBuilder();
         Config.initDataSourceList(Config.REDIS);
         if (Config.redisInfoList != null && Config.redisInfoList.size() > 0) {
             for (Config.RedisInfo redisInfo : Config.redisInfoList) {
@@ -36,13 +35,13 @@ public class RedisMonitoring {
                 try {
                     executeOperate(ip, port);
                 } catch (Exception e) {
-                    errorMessage += "redis ip=" + ip + " port=" + port + " error=" + e.getMessage();
+                    errorMessage.append("redis ip=").append(ip).append(" port=").append(port).append(" error=").append(e.getMessage());
                 }
             }
         }
-        if (!TextUtils.isBlank(errorMessage)) {
+        if (!TextUtils.isBlank(errorMessage.toString())) {
             logger.debug("redis开始发送异常消息");
-            weChatService.sendMessage(errorMessage);
+            weChatService.sendMessage(errorMessage.toString());
         }
         logger.debug("check Redis end.");
     }

@@ -1,6 +1,6 @@
 package com.coder.monitor.task;
 
-import com.coder.monitor.service.MongoService;
+//import com.coder.monitor.service.MongoService;
 import com.coder.monitor.service.WeChatService;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
@@ -51,29 +51,29 @@ public class DbMonitoring {
     }
 
     //    @Scheduled(fixedDelay = 5000)
-    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
-    private void monitorMongo() {
-        String message = "mongo 异常:";
-        String oneHost = null;
-        String dbName = null;
-        boolean isSendMess = false;
-        try {
-            for (String key : MongoService.map.keySet()) {
-                MongoService.monitorOne(key, MongoService.map.get(key));
-                oneHost = key;
-                dbName = MongoService.map.get(key);
-            }
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            message += oneHost;
-            message += ":";
-            message += dbName;
-            isSendMess = true;
-        }
-        if (isSendMess) {
-            weChatService.sendMessage(message);
-        }
-    }
+//    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
+//    private void monitorMongo() {
+//        String message = "mongo 异常:";
+//        String oneHost = null;
+//        String dbName = null;
+//        boolean isSendMess = false;
+//        try {
+//            for (String key : MongoService.map.keySet()) {
+//                MongoService.monitorOne(key, MongoService.map.get(key));
+//                oneHost = key;
+//                dbName = MongoService.map.get(key);
+//            }
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            message += oneHost;
+//            message += ":";
+//            message += dbName;
+//            isSendMess = true;
+//        }
+//        if (isSendMess) {
+//            weChatService.sendMessage(message);
+//        }
+//    }
 
     private DbStatus executeCheck(String url, String userName, String password) {
         DbStatus dbstatus = new DbStatus();
@@ -114,7 +114,7 @@ public class DbMonitoring {
     }
 
     public Connection getConnection(String url, String userName, String password) throws Exception {
-        String driverClassName = "com.mysql.jdbc.Driver";
+        String driverClassName = "com.mysql.cj.jdbc.Driver";
         Class.forName(driverClassName);//指定连接类型
         DriverManager.setLoginTimeout(20000);//毫秒
         return DriverManager.getConnection(url, userName, password);//获取连接

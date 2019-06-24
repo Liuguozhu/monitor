@@ -142,16 +142,16 @@
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
         <!-- mongodb-driver -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver</artifactId>
-            <version>3.10.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-core</artifactId>
-            <version>3.10.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mongodb</groupId>-->
+            <!--<artifactId>mongodb-driver</artifactId>-->
+            <!--<version>3.10.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.mongodb</groupId>-->
+            <!--<artifactId>mongodb-driver-core</artifactId>-->
+            <!--<version>3.10.2</version>-->
+        <!--</dependency>-->
 
         <!-- dom4j -->
         <dependency>

@@ -1,7 +1,6 @@
 package com.coder.monitor.task;
 
 
-import com.coder.monitor.controller.CommonController;
 import com.coder.monitor.service.WeChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,38 +31,37 @@ public class NetworkMonitoring {
 //            String hostAddress = address.getHostAddress();
 //            String hostName = address.getHostName();
             if (address instanceof java.net.Inet4Address) {
-                System.out.println(host + " is ipv4 address");
+                logger.info(host + " is ipv4 address");
             } else if (address instanceof java.net.Inet6Address) {
-                System.out.println(host + " is ipv6 address");
+                logger.info(host + " is ipv6 address");
             } else {
-                System.out.println(host + " is unrecongized");
+                logger.info(host + " is unrecongized");
             }
 
             if (address.isReachable(1000)) {
                 isReachable = true;
-                System.out.println("SUCCESS - ping " + host + " with no interface specified");
+                logger.info("SUCCESS - ping " + host + " with no interface specified");
             } else {
-                System.out.println("FAILURE - ping " + host + " with no interface specified");
+                logger.info("FAILURE - ping " + host + " with no interface specified");
             }
-            System.out.println("\n-------Trying different interfaces--------\n");
+            logger.info("\n-------Trying different interfaces--------\n");
 
             Enumeration<NetworkInterface> netInterfaces = NetworkInterface.getNetworkInterfaces();
             while (netInterfaces.hasMoreElements()) {
                 NetworkInterface ni = netInterfaces.nextElement();
-                System.out.println("Checking interface, DisplayName:" + ni.getDisplayName() +
-                        ", Name:" + ni.getName());
+                logger.info("Checking interface, DisplayName:" + ni.getDisplayName() + ", Name:" + ni.getName());
                 if (address.isReachable(ni, 0, 1000)) {
                     isReachable = true;
-                    System.out.println("SUCCESS - ping " + host);
+                    logger.info("SUCCESS - ping " + host);
                 } else {
-                    System.out.println("FAILURE - ping " + host);
+                    logger.info("FAILURE - ping " + host);
                 }
 
                 Enumeration<InetAddress> ips = ni.getInetAddresses();
                 while (ips.hasMoreElements()) {
-                    System.out.println("IP: " + ips.nextElement().getHostAddress());
+                    logger.info("IP: " + ips.nextElement().getHostAddress());
                 }
-                System.out.println("-------------------------------------------");
+                logger.info("-------------------------------------------");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,7 +88,7 @@ public class NetworkMonitoring {
                 InetAddress localAddr = localAddrs.nextElement();
                 if (isReachable(localAddr, remoteAddress)) {
                     retIP = localAddr.getHostAddress();
-                    System.out.println("retIP=" + retIP);
+                    logger.info("retIP=" + retIP);
                     break;
                 }
             }
@@ -112,12 +110,12 @@ public class NetworkMonitoring {
             InetSocketAddress endpointSocketAddr =
                     new InetSocketAddress(remoteInetAddr, 80);
             socket.connect(endpointSocketAddr, 5000);
-            System.out.println("SUCCESS - connection established! Local: " +
+            logger.info("SUCCESS - connection established! Local: " +
                     localInetAddr.getHostAddress() + " remote: " +
                     remoteInetAddr.getHostAddress() + " port" + 80);
             isReachable = true;
         } catch (IOException e) {
-            System.out.println("FAILRE - CAN not connect! Local: " +
+            logger.info("FAILRE - CAN not connect! Local: " +
                     localInetAddr.getHostAddress() + " remote: " +
                     remoteInetAddr.getHostAddress() + " port " + 80);
         } finally {
@@ -125,7 +123,7 @@ public class NetworkMonitoring {
                 try {
                     socket.close();
                 } catch (IOException e) {
-                    System.out.println("Error occurred while closing socket..");
+                    logger.info("Error occurred while closing socket..");
                 }
             }
         }
