@@ -37,9 +37,8 @@ The documentation is written using the open source tool [docsify](https://docsif
 mvn clean assembly:assembly
 ```
 
-After the package is complete, a `pybbs.tar.gz` file will be generated in the target directory under the project root directory, extract it and run `sh start.sh` to start the forum service.
+After the package is complete, a `monitor.tar.gz` file will be generated in the target directory under the project root directory, extract it and run `sh start.sh` to start the service.
 
-In addition, the tar.gz file generated after manual packaging is the latest release package in the release on github. After downloading, the extracted content is the same.
 
 ## Test
 
