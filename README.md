@@ -8,7 +8,7 @@
 
 当前版本：1.0
 
-- 后台地址：[http://192.168.1.66:/adminlogin](https://demo.yiiu.co/adminlogin) 用户名: test 密码: 123456
+- 后台地址：[http://192.168.1.66:/adminlogin](https://demo.yiiu.co/adminlogin) 用户名: admin 密码: 123123
 
 如果发现了bug或者有好的建议，欢迎提issue，当然更欢迎 pr。
 

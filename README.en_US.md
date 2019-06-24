@@ -19,11 +19,7 @@ The documentation is written using the open source tool [docsify](https://docsif
 
 ## Feature
 
-- This project integrates many third-party services, Such as redis, elasticsearch, websocket, etc.
-- you can use it to build your own website, or you can use it as a project to learn related technologies.
-- you can configure different third-party services on the backend.
-- Integrated flyway makes it easy to iterate on database operations
-- The document is very detailed
+- You can monitor the running of mysql, redis, mongodb, mq and other services. You can periodically ping a custom ip or domain name, and send an http request to the specified service for monitoring. If an exception occurs, you can send SMS, email, or corporate WeChat. Give the designated person.
 
 ## Getting Started
 
