@@ -40,9 +40,8 @@ public class MqMonitoring {
                 message.append(receiver(url));
             }
         }
-
         if (!TextUtils.isBlank(message.toString())) {
-            logger.debug("MQ开发发送异常消息");
+            logger.debug("MQ接收/发送异常消息");
             weChatService.sendMessage(message.toString());
         }
         logger.debug("check activeMq end.");
