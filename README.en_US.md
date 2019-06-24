@@ -35,11 +35,6 @@ mvn clean assembly:assembly
 
 After the package is complete, a `monitor.tar.gz` file will be generated in the target directory under the project root directory, extract it and run `sh start.sh` to start the service.
 
-
-## Test
-
-Project test cases have not been written yet!
-
 ## Feedback
 
 - [issues](https://github.com/Liuguozhu/monitor/issues)
