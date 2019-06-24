@@ -2,7 +2,7 @@
   <!-- Logo -->
   <a href="/admin/index" class="logo">
     <span class="logo-mini"><b>upstair</b>bbs</span>
-    <span class="logo-lg"><b>二楼</b>后台</span>
+    <span class="logo-lg"><b>monitor</b>后台</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
