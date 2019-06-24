@@ -2,6 +2,7 @@ package com.coder.monitor.config;
 
 //import com.coder.monitor.directive.*;
 import com.coder.monitor.common.BaseModel;
+import com.coder.monitor.util.LocaleMessageSourceUtil;
 import freemarker.template.TemplateModelException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,8 @@ public class FreemarkerConfig {
   private BaseModel baseModel;
   @Autowired
   private ShiroTag shiroTag;
+  @Autowired
+  private LocaleMessageSourceUtil localeMessageSourceUtil;
 
   @PostConstruct
   public void setSharedVariable() throws TemplateModelException {
@@ -38,6 +41,7 @@ public class FreemarkerConfig {
 //    configuration.setSharedVariable("tag_topics", topicListDirective);
 //    configuration.setSharedVariable("tag_tags", tagsDirective);
 
+    configuration.setSharedVariable("i18n", localeMessageSourceUtil);
     log.info("freemarker自定义标签配置完成!");
   }
 

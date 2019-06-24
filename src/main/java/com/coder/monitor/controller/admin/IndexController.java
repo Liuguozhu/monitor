@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
 
 @Controller
 public class IndexController extends BaseController {
@@ -71,5 +72,15 @@ public class IndexController extends BaseController {
         String url = WebUtils.getSavedRequest(request) == null ? "/admin/index" : WebUtils.getSavedRequest(request).getRequestUrl();
         return redirect(url);
     }
-
+    // 切换语言
+    @GetMapping("changeLanguage")
+    public String changeLanguage(String lang, HttpSession session, HttpServletRequest request) {
+        String referer = request.getHeader("referer");
+        if ("zh".equals(lang)) {
+            session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, Locale.SIMPLIFIED_CHINESE);
+        } else if ("en".equals(lang)) {
+            session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, Locale.US);
+        }
+        return StringUtils.isEmpty(referer) ? redirect("/") : redirect(referer);
+    }
 }

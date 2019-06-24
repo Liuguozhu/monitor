@@ -19,8 +19,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 @Controller
-public class CommonController {
-    private static Logger log = LoggerFactory.getLogger(CommonController.class);
+public class MonitorController {
+    private static Logger log = LoggerFactory.getLogger(MonitorController.class);
     @Autowired
     private SystemConfigService systemConfigService;
     @Autowired
