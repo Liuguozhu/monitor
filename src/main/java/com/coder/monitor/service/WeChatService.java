@@ -270,45 +270,7 @@ public class WeChatService {
      * @return
      */
     public String sendMessage(String message) {
-        String notifyWay = systemConfigService.selectByKey("notify_way").getValue();
-        String[] s = notifyWay.split(",");
-        for (String way : s) {
-            switch (way) {
-                case "email":
-                    sendMessageToEmail(message);
-                    break;
-                case "sms_tencent":
-                    sendMessageToSMS(message);
-                    break;
-                case "sms_ali":
-                    sendMessageToSMS(message);
-                    break;
-                case "wechat":
-                    sendMessageToQy(message);
-                default:
-                    log.info("notify way [{}] is nonexistent!", way);
-                    break;
-            }
-
-        }
-
-        return "0000";//TODO
-    }
-
-    //TODO 需要拆开是用那个短信服务商的api
-    private void sendMessageToSMS(String message) {
-        String mobile="";//TODO 获取接收异常通知的配置，拿到mobile号码
-        smsService.sendSms(mobile, message);
-    }
-
-    private void sendMessageToEmail(String message) {
-        String email="";//TODO 获取接收异常通知的配置，拿到email地址
-        // 发送激活邮件
-        new Thread(() -> {
-            String title = "服务器异常通知";
-            String content = "服务器异常通知：%s";
-            emailService.sendEmail(email, title, String.format(content, message));
-        }).start();
+        return sendMessageToQy(message);
     }
 
     /**

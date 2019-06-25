@@ -77,7 +77,7 @@ public class SendMessageService {
                 case "wechat":
                     sendMessageToQy(message);
                     break;
-                    //TODO 增加微信订阅号，服务号的消息推送
+                    //TODO 增加微信订阅号或服务号（这两者相同），公众号的消息推送
                 default:
                     log.info("notify way [{}] is nonexistent!", way);
                     break;
