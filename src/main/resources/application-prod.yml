@@ -3,9 +3,9 @@ spring:
     location: file:./banner.txt
 
 datasource_driver: com.mysql.cj.jdbc.Driver
-datasource_url: jdbc:mysql://10.6.6.1:3306/monitor?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+datasource_url: jdbc:mysql://10.6.6.201:3306/monitor?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
 datasource_username: root
-datasource_password: coder&123
+datasource_password: ophyer63037996
 
 # 想看mybatis执行的sql的时候，去掉下面这段的注释
 #logging:
