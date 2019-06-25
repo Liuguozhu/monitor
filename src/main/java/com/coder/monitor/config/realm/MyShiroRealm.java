@@ -19,11 +19,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
 

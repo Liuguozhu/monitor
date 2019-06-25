@@ -6,11 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 public class HttpUtil {
 
   public static boolean isApiRequest(HttpServletRequest request) {

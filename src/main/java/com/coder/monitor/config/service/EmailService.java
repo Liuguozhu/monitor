@@ -14,11 +14,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 // 这个工具类来自博客：https://www.cnblogs.com/whgk/p/6506027.html
 @Component
 @DependsOn("mybatisPlusConfig")

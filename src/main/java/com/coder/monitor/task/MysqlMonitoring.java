@@ -1,7 +1,6 @@
 package com.coder.monitor.task;
 
-//import com.coder.monitor.service.MongoService;
-import com.coder.monitor.service.WeChatService;
+import com.coder.monitor.service.SendMessageService;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +12,14 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 
 /**
- * 数据库(mysql & mongodb)监控 TODO 可以拆分二
+ * 数据库(mysql)监控
  */
 @Component
 @EnableScheduling
-public class DbMonitoring {
-    private static final Logger logger = LoggerFactory.getLogger(DbMonitoring.class);
+public class MysqlMonitoring {
+    private static final Logger logger = LoggerFactory.getLogger(MysqlMonitoring.class);
     @Autowired
-    private WeChatService weChatService;
+    private SendMessageService sendMessageService;
 
     //    @Scheduled(fixedDelay = 5000)
     @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
@@ -44,36 +43,11 @@ public class DbMonitoring {
         }
         if (!TextUtils.isBlank(message.toString())) {
             logger.debug("DB开始发送异常消息");
-            weChatService.sendMessage(message.toString());
+            sendMessageService.sendMessage(message.toString());
         }
         logger.debug("check DB end.");
 
     }
-
-    //    @Scheduled(fixedDelay = 5000)
-//    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
-//    private void monitorMongo() {
-//        String message = "mongo 异常:";
-//        String oneHost = null;
-//        String dbName = null;
-//        boolean isSendMess = false;
-//        try {
-//            for (String key : MongoService.map.keySet()) {
-//                MongoService.monitorOne(key, MongoService.map.get(key));
-//                oneHost = key;
-//                dbName = MongoService.map.get(key);
-//            }
-//        } catch (Exception e) {
-//            logger.error(e.getMessage());
-//            message += oneHost;
-//            message += ":";
-//            message += dbName;
-//            isSendMess = true;
-//        }
-//        if (isSendMess) {
-//            weChatService.sendMessage(message);
-//        }
-//    }
 
     private DbStatus executeCheck(String url, String userName, String password) {
         DbStatus dbstatus = new DbStatus();

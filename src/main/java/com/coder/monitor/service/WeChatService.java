@@ -1,5 +1,7 @@
 package com.coder.monitor.service;
 
+import com.coder.monitor.config.service.EmailService;
+import com.coder.monitor.config.service.SmsService;
 import com.coder.monitor.exception.ApiAssert;
 import com.coder.monitor.util.JsonUtil;
 import org.apache.http.HttpEntity;
@@ -46,6 +48,11 @@ public class WeChatService {
     private static Logger log = LoggerFactory.getLogger(WeChatService.class);
     @Autowired
     private SystemConfigService systemConfigService;
+    @Autowired
+    private EmailService emailService;
+    @Autowired
+    private SmsService smsService;
+
     private static String ACCESS_TOKEN;//公众号的全局唯一票据
     private static long EXPIRES_TIME;//过期时间
 
@@ -67,6 +74,10 @@ public class WeChatService {
         APP_SECRET = appSecret.toString();
         TOKEN = token.toString();
         AGENT_ID = agentId.toString();
+        ApiAssert.notEmpty(APP_ID, "未配置微信appId");
+        ApiAssert.notEmpty(APP_SECRET, "未配置微信appSecret");
+        ApiAssert.notEmpty(TOKEN, "未配置微信token");
+        ApiAssert.notEmpty(AGENT_ID, "未配置微信agentId");
     }
 
     /**
@@ -108,7 +119,7 @@ public class WeChatService {
                 log.debug("ACCESS_TOKEN=" + ACCESS_TOKEN);
                 Object expiresIn = map.get("expires_in");//凭证有效时间，单位：秒
                 ApiAssert.notNull(expiresIn, "获取微信企业号的token失败！expires_in 为空");
-                int time = (Integer)expiresIn;//凭证有效时间，单位：秒
+                int time = (Integer) expiresIn;//凭证有效时间，单位：秒
 
                 EXPIRES_TIME = System.currentTimeMillis() + time * 1000;
                 log.debug("expires_in=" + time);
@@ -259,7 +270,45 @@ public class WeChatService {
      * @return
      */
     public String sendMessage(String message) {
-        return sendMessageToQy(message);
+        String notifyWay = systemConfigService.selectByKey("notify_way").getValue();
+        String[] s = notifyWay.split(",");
+        for (String way : s) {
+            switch (way) {
+                case "email":
+                    sendMessageToEmail(message);
+                    break;
+                case "sms_tencent":
+                    sendMessageToSMS(message);
+                    break;
+                case "sms_ali":
+                    sendMessageToSMS(message);
+                    break;
+                case "wechat":
+                    sendMessageToQy(message);
+                default:
+                    log.info("notify way [{}] is nonexistent!", way);
+                    break;
+            }
+
+        }
+
+        return "0000";//TODO
+    }
+
+    //TODO 需要拆开是用那个短信服务商的api
+    private void sendMessageToSMS(String message) {
+        String mobile="";//TODO 获取接收异常通知的配置，拿到mobile号码
+        smsService.sendSms(mobile, message);
+    }
+
+    private void sendMessageToEmail(String message) {
+        String email="";//TODO 获取接收异常通知的配置，拿到email地址
+        // 发送激活邮件
+        new Thread(() -> {
+            String title = "服务器异常通知";
+            String content = "服务器异常通知：%s";
+            emailService.sendEmail(email, title, String.format(content, message));
+        }).start();
     }
 
     /**

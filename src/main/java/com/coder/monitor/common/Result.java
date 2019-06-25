@@ -1,10 +1,5 @@
 package com.coder.monitor.common;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 public class Result {
 
   private Integer code;

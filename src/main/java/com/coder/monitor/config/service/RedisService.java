@@ -14,11 +14,6 @@ import redis.clients.jedis.params.SetParams;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 @Component
 @DependsOn("mybatisPlusConfig")
 public class RedisService implements BaseService<JedisPool> {

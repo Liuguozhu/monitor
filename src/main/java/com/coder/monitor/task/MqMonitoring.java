@@ -1,7 +1,7 @@
 package com.coder.monitor.task;
 
 
-import com.coder.monitor.service.WeChatService;
+import com.coder.monitor.service.SendMessageService;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.http.util.TextUtils;
@@ -27,7 +27,7 @@ public class MqMonitoring {
     private static final int SEND_NUMBER = 2;
 
     @Autowired
-    private WeChatService weChatService;
+    private SendMessageService sendMessageService;
 
     @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
     public void checkActiveMQ() {
@@ -42,7 +42,7 @@ public class MqMonitoring {
         }
         if (!TextUtils.isBlank(message.toString())) {
             logger.debug("MQ接收/发送异常消息");
-            weChatService.sendMessage(message.toString());
+            sendMessageService.sendMessage(message.toString());
         }
         logger.debug("check activeMq end.");
 

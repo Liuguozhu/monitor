@@ -8,11 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2016, All Rights Reserved.
- * https://yiiu.co
- */
 public class DateUtil {
 
   private DateUtil() {

@@ -1,11 +1,11 @@
 package com.coder.monitor.task;
 
-import com.coder.monitor.config.service.RedisService;
-import com.coder.monitor.service.WeChatService;
+import com.coder.monitor.service.SendMessageService;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
@@ -15,15 +15,11 @@ import javax.annotation.Resource;
  */
 public class RedisMonitoring {
     private static final Logger logger = LoggerFactory.getLogger(RedisMonitoring.class);
-
     private static final String key = "monitoring";
-
-    @Resource(name = "redisService")
-    private RedisService redisService;
-
     @Autowired
-    private WeChatService weChatService;
+    private SendMessageService sendMessageService;
 
+    @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
     public void checkRedis() {
         logger.debug("check Redis begin.");
         StringBuilder errorMessage = new StringBuilder();
@@ -41,7 +37,7 @@ public class RedisMonitoring {
         }
         if (!TextUtils.isBlank(errorMessage.toString())) {
             logger.debug("redis开始发送异常消息");
-            weChatService.sendMessage(errorMessage.toString());
+            sendMessageService.sendMessage(errorMessage.toString());
         }
         logger.debug("check Redis end.");
     }
@@ -67,7 +63,6 @@ public class RedisMonitoring {
         del(jedis);
         jedis.close();
     }
-
 
     private Long put(Jedis jedis) {
         return jedis.append(key, "test");

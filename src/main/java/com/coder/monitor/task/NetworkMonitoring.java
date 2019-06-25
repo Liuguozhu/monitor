@@ -1,7 +1,7 @@
 package com.coder.monitor.task;
 
 
-import com.coder.monitor.service.WeChatService;
+import com.coder.monitor.service.SendMessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.Enumeration;
 public class NetworkMonitoring {
     private static final Logger logger = LoggerFactory.getLogger(NetworkMonitoring.class);
     @Autowired
-    private WeChatService weChatService;
+    private SendMessageService sendMessageService;
 
     //    @Scheduled(fixedDelay = 5000)
     @Scheduled(cron = "0 0/5 * * * ?")//每5分钟执行一次
@@ -68,7 +68,7 @@ public class NetworkMonitoring {
         }
         if (!isReachable) {
             logger.debug("DB开始发送异常消息");
-            weChatService.sendMessage("FAILURE - ping " + host);
+            sendMessageService.sendMessage("FAILURE - ping " + host);
         }
         logger.debug("check Network end.");
     }

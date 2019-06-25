@@ -35,11 +35,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 @Component
 @DependsOn("mybatisPlusConfig")
 public class ElasticSearchService implements BaseService<RestHighLevelClient> {

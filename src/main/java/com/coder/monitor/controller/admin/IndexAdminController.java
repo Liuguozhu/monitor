@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.management.ManagementFactory;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 @Controller
 @RequestMapping("/admin")
 public class IndexAdminController  {

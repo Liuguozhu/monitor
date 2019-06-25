@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by tomoya.
- * Copyright (c) 2018, All Rights Reserved.
- * https://yiiu.co
- */
 @Controller
 @RequestMapping("/admin/system")
 public class SystemConfigAdminController extends BaseController {
