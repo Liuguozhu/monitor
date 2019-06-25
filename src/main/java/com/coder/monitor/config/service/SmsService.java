@@ -79,7 +79,7 @@ public class SmsService {
     }
 
     // 发短信
-    private boolean sendSmsByAliYun(String mobile, String code) {
+    public boolean sendSmsByAliYun(String mobile, String code) {
         try {
             if (StringUtils.isEmpty(mobile)) return false;
             // 获取连接
@@ -108,10 +108,10 @@ public class SmsService {
 
 
     // 发短信
-    private boolean sendSmsByTencent(String mobile, String message) {
+    public boolean sendSmsByTencent(String mobile, String message) {
         log.info("mobile = {}  code ={}", mobile, message);
         ApiAssert.notNull(appid, "请先配置腾讯短信服务的appId"); // 短信应用 SDK AppKey
-        ApiAssert.notNull(appkey, "请先配置腾讯短信服务的appKey"); // 短信应用 SDK AppKey
+        ApiAssert.notEmpty(appkey, "请先配置腾讯短信服务的appKey"); // 短信应用 SDK AppKey
         try {
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
             //type 0表示普通短信，1表示营销短信
