@@ -30,7 +30,6 @@ public class NetworkMonitoring {
             sendMessageService.sendMessage("FAILURE - ping " + host);
         }
         logger.debug("check Network end.");
-        return;
 
 //        boolean isReachable = false;
 //        try {

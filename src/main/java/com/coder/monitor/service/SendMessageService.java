@@ -55,7 +55,7 @@ public class SendMessageService {
     @Autowired
     private WeChatService weChatService;
     /**
-     * 主动向微信公众号推送消息
+     * 主动推送消息
      *
      * @param message
      * @return

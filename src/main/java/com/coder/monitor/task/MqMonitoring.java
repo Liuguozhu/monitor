@@ -42,7 +42,7 @@ public class MqMonitoring {
         }
         if (!TextUtils.isBlank(message.toString())) {
             logger.debug("MQ接收/发送异常消息");
-            sendMessageService.sendMessage(message.toString());
+            sendMessageService.sendMessage("MQ ERROR:"+message.toString());
         }
         logger.debug("check activeMq end.");
 
