@@ -25,7 +25,7 @@
         <jsoup.version>1.11.3</jsoup.version>
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <flyway.version>5.2.3</flyway.version>
-        <elasticsearch.version>6.5.3</elasticsearch.version>
+        <elasticsearch.version>6.8.15</elasticsearch.version>
         <mail.version>1.6.2</mail.version>
         <shiro-spring.version>1.4.0</shiro-spring.version>
         <jedis.version>3.0.0</jedis.version>
