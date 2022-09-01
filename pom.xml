@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <jsoup.version>1.11.3</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <flyway.version>5.2.3</flyway.version>
         <elasticsearch.version>6.5.3</elasticsearch.version>
